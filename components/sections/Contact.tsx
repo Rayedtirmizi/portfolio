@@ -20,8 +20,8 @@ export default function Contact() {
         </div>
 
         <h2 className="text-4xl md:text-6xl font-medium leading-tight max-w-3xl mb-12">
-          Got something worth building? <span className="text-[var(--accent)]">Let&apos;s talk.</span>
-        </h2>
+  Got something worth building? <span className="italic text-[var(--text-muted)]">Let&apos;s talk.</span>
+</h2>
 
         {contact && (
           <div className="flex flex-col md:flex-row gap-6 md:gap-12">

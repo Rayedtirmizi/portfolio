@@ -34,14 +34,18 @@ export default function ProjectPage() {
         ))}
       </div>
       {project.images.length > 0 && (
-        <div className="space-y-4 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
           {project.images.map((img, i) => (
             // eslint-disable-next-line @next/next/no-img-element
-            <img key={i} src={img} alt={`${project.title} screenshot ${i + 1}`} className="w-full rounded-2xl border border-[var(--text-primary)]/10" />
+            <img key={i} src={img} alt={`${project.title} screenshot ${i + 1}`} className="w-full h-64 md:h-80 object-cover rounded-2xl border border-[var(--text-primary)]/10" />
           ))}
         </div>
       )}
-      <p className="text-lg text-[var(--text-muted)] leading-relaxed">{project.longDescription}</p>
+      <div className="text-lg text-[var(--text-muted)] leading-relaxed space-y-4">
+        {project.longDescription.split("\n\n").map((para, i) => (
+          <p key={i}>{para}</p>
+        ))}
+      </div>
       {project.link && (
         <a href={project.link} target="_blank" className="inline-block mt-8 text-[var(--accent)] border-b border-[var(--accent)] pb-1">
           View Project →
