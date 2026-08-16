@@ -1,18 +1,19 @@
-const experiences = [
-  {
-    role: "Software Engineering Intern",
-    company: "VOXA — AI-Powered Speech Coaching Platform",
-    dates: "2025 – 2026",
-    bullets: [
-      "Developed production features using React, TypeScript, and Tailwind CSS for a live customer-facing web app",
-      "Designed and implemented onboarding flows and UI screens, improving first-time user experience",
-      "Integrated analytics and quality tooling, improving application performance and maintainability",
-      "Participated in code reviews and CI/CD workflows, gaining practical startup-level engineering experience",
-    ],
-  },
-];
+"use client";
+
+import { useEffect, useState } from "react";
+import { getExperiences, Experience as ExperienceType } from "@/lib/firestoreExperience";
 
 export default function Experience() {
+  const [experiences, setExperiences] = useState<ExperienceType[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    getExperiences().then((data) => {
+      setExperiences(data);
+      setLoading(false);
+    });
+  }, []);
+
   return (
     <section id="experience" className="px-6 md:px-12 py-24">
       <div className="max-w-6xl mx-auto">
@@ -22,9 +23,11 @@ export default function Experience() {
           <span className="text-xs text-[var(--text-muted)]">04</span>
         </div>
 
+        {loading && <p className="text-[var(--text-muted)]">Loading...</p>}
+
         <div className="space-y-10">
           {experiences.map((exp) => (
-            <div key={exp.role} className="grid md:grid-cols-4 gap-6 border-b border-[var(--text-primary)]/10 pb-10">
+            <div key={exp.id} className="grid md:grid-cols-4 gap-6 border-b border-[var(--text-primary)]/10 pb-10">
               <div className="md:col-span-1">
                 <p className="text-sm text-[var(--text-muted)]">{exp.dates}</p>
               </div>
