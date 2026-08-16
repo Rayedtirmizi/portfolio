@@ -19,15 +19,18 @@ export default function Hero() {
           <a href="#projects" className="hover:text-[var(--text-primary)] transition-colors">Projects</a>
           <a href="#contact" className="hover:text-[var(--text-primary)] transition-colors">Contact</a>
         </div>
-        <button className="px-5 py-2 rounded-full bg-[var(--text-primary)] text-[var(--bg)] text-xs font-medium hover:opacity-80 transition-opacity">
-          Get in touch
-        </button>
+        <button className="px-5 py-2 rounded-full border border-white text-white text-xs font-medium hover:bg-white hover:text-black transition-colors">
+  Get in touch
+</button>
       </nav>
 
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none">
-        <h1 className="text-[12vw] md:text-[10vw] font-light leading-none tracking-[0.02em] text-[var(--text-primary)]/5 whitespace-nowrap">
-          {hero?.name ?? "Rayed Tirmizi"}
-        </h1>
+       <h1
+  className="text-[12vw] md:text-[10vw] font-light leading-none tracking-[0.02em] text-[var(--text-primary)]/20 tespace-nowrap"
+  style={{ fontFamily: "var(--font-playfair)" }}
+>
+  {hero?.name ?? "Rayed Tirmizi"}
+</h1>
       </div>
 
       <div className="relative z-10 flex justify-between items-end">

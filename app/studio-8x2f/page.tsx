@@ -267,12 +267,27 @@ export default function StudioPage() {
             }}
             className="w-full border border-[var(--text-primary)]/20 rounded-lg px-4 py-3"
           />
-          <div className="flex flex-wrap gap-2 mt-2">
-            {editing?.images.map((img, i) => (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img key={i} src={img} alt="" className="w-20 h-20 object-cover rounded-lg" />
-            ))}
-          </div>
+         <div className="flex flex-wrap gap-2 mt-2">
+  {editing?.images.map((img, i) => (
+    <div key={i} className="relative">
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src={img} alt="" className="w-20 h-20 object-cover rounded-lg" />
+      <button
+        type="button"
+        onClick={() => {
+          if (!editing) return;
+          setEditing({
+            ...editing,
+            images: editing.images.filter((_, idx) => idx !== i),
+          });
+        }}
+        className="absolute -top-2 -right-2 w-5 h-5 rounded-full bg-red-500 text-white text-xs flex items-center justify-center"
+      >
+        ✕
+      </button>
+    </div>
+  ))}
+</div>
 
           <button type="submit" disabled={saving} className="bg-[var(--accent)] text-black px-6 py-3 rounded-lg font-medium">
             {saving ? "Saving..." : "Save Project"}
